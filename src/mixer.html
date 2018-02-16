@@ -1,23 +1,20 @@
 <html>
 <head>
-    <script type="text/javascript" src="mixer.js">
-        import {Mixer} from 'mixer'
-        window.Mixer = Mixer;
-        //window.Mixer = require('mixer');
+    <script type="text/javascript" src="camelot.mixer.js"></script>
+    <script type="text/javascript">
         window.getMixes = function () {
             console.clear();
             var input = document.forms['mixer-input'].elements['camelotSignature'].value;
-            var output = Mixer.getMixesFor(input);
+            var output = CamelotMixer.getMixesFor(input);
             if (output) {
                 console.log("Computed for: " + input);
                 var basicOutput = output.possibleMixes.map(function (mix) {
-                var output = {
-                    name: mix.name,
-                    newMix: mix.newMix.signature
-                };
-                console.log(output);
-                return output;
-            });
+                    var output = {
+                        name: mix.name,
+                        newMix: mix.newMix.signature
+                    };
+                    console.log(output);
+                });
             }
             return false; // Don't actually submit anything
         }

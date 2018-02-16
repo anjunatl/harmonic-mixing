@@ -1,7 +1,7 @@
 module.exports = {
     collectCoverage: true,
     collectCoverageFrom: [
-        "src/mixer.js"
+        "src/camelot.mixer.js"
     ],
     coverageDirectory: './coverage/'
 };
