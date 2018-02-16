@@ -1,0 +1,37 @@
+<html>
+<head>
+    <script type="text/javascript" src="mixer.js">
+        import {Mixer} from 'mixer'
+        window.Mixer = Mixer;
+        //window.Mixer = require('mixer');
+        window.getMixes = function () {
+            console.clear();
+            var input = document.forms['mixer-input'].elements['camelotSignature'].value;
+            var output = Mixer.getMixesFor(input);
+            if (output) {
+                console.log("Computed for: " + input);
+                var basicOutput = output.possibleMixes.map(function (mix) {
+                var output = {
+                    name: mix.name,
+                    newMix: mix.newMix.signature
+                };
+                console.log(output);
+                return output;
+            });
+            }
+            return false; // Don't actually submit anything
+        }
+    </script>
+</head>
+<body>
+    <div class="input">
+        <form name="mixer-input" onsubmit="return getMixes()">
+            <input placeholder="Example: 12A" autofocus="autofocus" name="camelotSignature">
+            <button type="submit">Go</button>
+        </form>
+    </div>
+    <div class="output">
+    <p>Open your console log for now</p>
+    </div>
+</body>
+</html>
