@@ -12,7 +12,8 @@
     "url": "git+https://github.com/anjunatl/harmonic-mixing.git"
   },
   "author": "Kevin Hoff <hoffkm@gmail.com>",
-  "license": "MIT",
+  "license": "UNLICENSED",
+  "private": true,
   "bugs": {
     "url": "https://github.com/anjunatl/harmonic-mixing/issues"
   },
@@ -21,5 +22,8 @@
     "http-server": "0.11.1",
     "jest": "22.3.0",
     "underscore": "1.8.3"
+  },
+  "dependencies": {
+    "redux": "^3.7.2"
   }
 }
