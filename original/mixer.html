@@ -1,34 +1,37 @@
 <html>
+
 <head>
-    <script type="text/javascript" src="camelot.mixer.js"></script>
-    <script type="text/javascript">
-        window.getMixes = function () {
-            console.clear();
-            var input = document.forms['mixer-input'].elements['camelotSignature'].value;
-            var output = CamelotMixer.getMixesFor(input);
-            if (output) {
-                console.log("Computed for: " + input);
-                var basicOutput = output.possibleMixes.map(function (mix) {
-                    var output = {
-                        name: mix.name,
-                        newMix: mix.newMix.signature
-                    };
-                    console.log(output);
-                });
-            }
-            return false; // Don't actually submit anything
-        }
-    </script>
+  <script type="text/javascript" src="camelot.mixer.js"></script>
+  <script type="text/javascript">
+    window.getMixes = function () {
+      console.clear();
+      var input = document.forms['mixer-input'].elements['camelotSignature'].value;
+      var output = CamelotMixer.getMixesFor(input);
+      if (output) {
+        console.log("Computed for: " + input);
+        var basicOutput = output.possibleMixes.map(function (mix) {
+          var output = {
+            name: mix.name,
+            newMix: mix.newMix.signature
+          };
+          console.log(output);
+        });
+      }
+      return false; // Don't actually submit anything
+    }
+  </script>
 </head>
+
 <body>
-    <div class="input">
-        <form name="mixer-input" onsubmit="return getMixes()">
-            <input placeholder="Example: 12A" autofocus="autofocus" name="camelotSignature">
-            <button type="submit">Go</button>
-        </form>
-    </div>
-    <div class="output">
+  <div class="input">
+    <form name="mixer-input" onsubmit="return getMixes()">
+      <input placeholder="Example: 12A" autofocus="autofocus" name="camelotSignature">
+      <button type="submit">Go</button>
+    </form>
+  </div>
+  <div class="output">
     <p>Open your console log for now</p>
-    </div>
+  </div>
 </body>
+
 </html>
