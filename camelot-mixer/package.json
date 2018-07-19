@@ -1,5 +1,5 @@
 {
-  "name": "harmonic-mixing",
+  "name": "camelot-mixer",
   "version": "1.0.0",
   "description": "A JavaScript tool to help you find music while djing",
   "main": "index.js",
@@ -12,7 +12,7 @@
     "url": "git+https://github.com/anjunatl/harmonic-mixing.git"
   },
   "author": "Kevin Hoff <hoffkm@gmail.com>",
-  "license": "MIT",
+  "license": "CC-BY-SA-4.0",
   "bugs": {
     "url": "https://github.com/anjunatl/harmonic-mixing/issues"
   },
