@@ -147,10 +147,10 @@ class MyApp extends PolymerElement {
     // statement, so break it up.
     switch (page) {
       case 'mixer':
-        import('./view-mixer');
+        import('./view-mixer.js');
         break;
       case 'view-404':
-        import('./view-404');
+        import('./view-404.js');
         break;
       default:
         // https://www.webcomponents.org/element/PolymerElements/app-route/v2.1.2
