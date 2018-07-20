@@ -41,36 +41,6 @@ class MyApp extends PolymerElement {
 
           display: block;
         }
-
-        app-drawer-layout:not([narrow]) [drawer-toggle] {
-          display: none;
-        }
-
-        app-header {
-          color: #fff;
-          background-color: var(--app-primary-color);
-        }
-
-        app-header paper-icon-button {
-          --paper-icon-button-ink-color: white;
-        }
-
-        .drawer-list {
-          margin: 0 20px;
-        }
-
-        .drawer-list a {
-          display: block;
-          padding: 0 16px;
-          text-decoration: none;
-          color: var(--app-secondary-color);
-          line-height: 40px;
-        }
-
-        .drawer-list a.iron-selected {
-          color: black;
-          font-weight: bold;
-        }
       </style>
 
       <app-location route="{{route}}" url-space-regex="^[[rootPath]]">
@@ -80,24 +50,8 @@ class MyApp extends PolymerElement {
       </app-route>
 
       <app-drawer-layout fullbleed="" narrow="{{narrow}}">
-        <!-- Drawer content -->
-        <app-drawer id="drawer" slot="drawer" swipe-open="[[narrow]]">
-          <app-toolbar>Menu</app-toolbar>
-          <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
-            <a name="mixer" href="[[rootPath]]mixer">Mixer</a>
-          </iron-selector>
-        </app-drawer>
-
         <!-- Main content -->
         <app-header-layout has-scrolling-region="">
-
-          <app-header slot="header" condenses="" reveals="" effects="waterfall">
-            <app-toolbar>
-              <paper-icon-button icon="my-icons:menu" drawer-toggle=""></paper-icon-button>
-              <div main-title="">My App</div>
-            </app-toolbar>
-          </app-header>
-
           <iron-pages selected="[[page]]" attr-for-selected="name" role="main">
             <view-mixer name="mixer"></view-mixer>
             <view-404 name="view-404"></view-404>
@@ -132,11 +86,6 @@ class MyApp extends PolymerElement {
       this.page = page;
     } else {
       this.page = 'view-404';
-    }
-
-    // Close a non-persistent drawer when the page & route are changed.
-    if (!this.$.drawer.persistent) {
-      this.$.drawer.close();
     }
   }
 
