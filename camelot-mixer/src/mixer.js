@@ -1,4 +1,4 @@
-import { CamelotMixer } from "camelot.mixer.js";
+import { CamelotMixer } from "./camelot.mixer.js";
 
 window.getMixes = function () {
     console.clear();
