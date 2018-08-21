@@ -9,6 +9,7 @@
  */
 
 import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
+import '@polymer/paper-input/paper-input.js';
 import './shared-styles.js';
 
 class ViewMixer extends PolymerElement {
@@ -25,7 +26,8 @@ class ViewMixer extends PolymerElement {
       <div class="card">
         <div class="circle">M</div>
         <h1>Mixer</h1>
-        <p>Almost there.... Work on connecting the library with good polymer form practices next</p>
+        <p>Enter the Camelot key you're mixing from</p>
+        <paper-input always-float-label label="Camelot Key" placeholder="12A"></paper-input>
       </div>
     `;
   }
