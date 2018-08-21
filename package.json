@@ -19,7 +19,7 @@
   "homepage": "https://github.com/anjunatl/harmonic-mixing#readme",
   "devDependencies": {
     "http-server": "0.11.1",
-    "jest": "22.3.0",
+    "jest": "23.5.0",
     "underscore": "1.8.3"
   }
 }
