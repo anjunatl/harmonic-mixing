@@ -42,9 +42,6 @@ Things picked up along the way
     "jest": "23.5.0",
     // functional programming helpers - https://underscorejs.org/
     "underscore": "1.8.3",
-    // Static module bundler - https://webpack.js.org
-    "webpack": "^4.23.1",
-    "webpack-cli": "^3.1.2",
     // babel - so jest can understand the syntax https://github.com/vuejs/vue-cli/issues/1584#issuecomment-397738332 
     "babel-core": "^6.26.3",
     "babel-jest": "^23.6.0",
