@@ -1,34 +1,53 @@
 <html>
 <head>
-    <script type="text/javascript" src="camelot.mixer.js"></script>
+    <title>Harmonic Mixing</title>
+    <link rel="stylesheet" type="text/css" href="mixer.css">
     <script type="text/javascript">
         window.getMixes = function () {
-            console.clear();
             var input = document.forms['mixer-input'].elements['camelotSignature'].value;
             var output = CamelotMixer.getMixesFor(input);
             if (output) {
-                console.log("Computed for: " + input);
                 var basicOutput = output.possibleMixes.map(function (mix) {
-                    var output = {
+                    return {
                         name: mix.name,
                         newMix: mix.newMix.signature
                     };
-                    console.log(output);
                 });
+                writeOutputToPage(input, basicOutput);
+            } else {
+                // writeErrorToPage();
             }
-            return false; // Don't actually submit anything
+            return false;
+
+            function writeOutputToPage(input, basicOutput) {
+                var outputContainer = document.getElementById('output');
+                var outputValue = document.createElement('pre');
+                outputValue.innerText = JSON.stringify(basicOutput, null, 2);
+                outputContainer.appendChild(outputValue);
+            }
+
+            // function writeErrorToPage() {
+            //     var outputContainer = document.getElementById('output');
+            //     var errorValue = document.createElement('div');
+            //     errorValue.innerText = 'Check the camelot notation, it should be 1-12 & A or B. Example: 12A'
+            //     outputContainer.replaceChild(errorValue);
+            // }
         }
     </script>
 </head>
 <body>
-    <div class="input">
-        <form name="mixer-input" onsubmit="return getMixes()">
-            <input placeholder="Example: 12A" autofocus="autofocus" name="camelotSignature">
-            <button type="submit">Go</button>
-        </form>
+    <div id="harmonic-mixer-container">
+        <div id="heading">
+            Harmonic Mixing
+        </div>
+        <div id="input">
+            <form name="mixer-input">
+                <input placeholder="Example: 12A" autofocus="autofocus" name="camelotSignature">
+                <button type="button" onclick="return getMixes()">Go</button>
+            </form>
+        </div>
+        <div id="output"></div>
     </div>
-    <div class="output">
-    <p>Open your console log for now</p>
-    </div>
+    <script type="text/javascript" src="camelot.mixer.js"></script>
 </body>
 </html>

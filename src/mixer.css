@@ -1,0 +1,16 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+div#harmonic-mixer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5em;
+}
+
+div#harmonic-mixer-container > div {
+    margin-bottom: 5em;
+}
+

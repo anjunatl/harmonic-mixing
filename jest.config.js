@@ -3,5 +3,8 @@ module.exports = {
     collectCoverageFrom: [
         "src/camelot.mixer.js"
     ],
-    coverageDirectory: './coverage/'
+    coverageDirectory: './coverage/',
+    transform: {
+        '^.+\\.js$': 'babel-jest'
+    }
 };
