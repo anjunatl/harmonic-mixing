@@ -45,6 +45,8 @@ Things picked up along the way
     // Static module bundler - https://webpack.js.org
     "webpack": "^4.23.1",
     "webpack-cli": "^3.1.2",
+    "style-loader": "^0.23.1",
+    "css-loader": "^1.0.1",
     // babel - so jest can understand the syntax https://github.com/vuejs/vue-cli/issues/1584#issuecomment-397738332 
     "babel-core": "^6.26.3",
     "babel-jest": "^23.6.0",
