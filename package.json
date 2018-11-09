@@ -6,7 +6,8 @@
   "main": "index.js",
   "scripts": {
     "coverage": "http-server -a localhost -p 8001 coverage/lcov-report/",
-    "test": "jest"
+    "test": "jest",
+    "dev": "http-server -a localhost -p 8000 . & open http://localhost:8000/src/lit.html"
   },
   "repository": {
     "type": "git",

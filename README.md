@@ -8,7 +8,8 @@ For more information about harmonic mixing: http://www.harmonic-mixing.com/howto
 Dev setup
 --------------------------------------------------------------------------------
 
-`¯\_(ツ)_/¯`
+1. `npm install`
+1. `npm run dev`
 
 Usage
 --------------------------------------------------------------------------------
