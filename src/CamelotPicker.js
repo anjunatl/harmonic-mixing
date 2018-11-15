@@ -38,12 +38,8 @@ class CamelotPicker extends Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    if (this.state.letter !== nextState.letter ||
-        this.state.number !== nextState.number) {
-      return true
-    }
-
-    return false
+    return (this.state.letter !== nextState.letter ||
+        this.state.number !== nextState.number)
   }
 
   componentDidUpdate(prevProps, prevState) {
