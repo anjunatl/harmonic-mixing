@@ -1,0 +1,55 @@
+.CamelotPicker {
+  width: 400px;
+  display: grid;
+  grid-template-rows: 3;
+  grid-template-columns: 6;
+}
+
+.CamelotPicker button {
+  display: block;
+  width: 100%;
+}
+
+.letters {
+  grid-row: 1;
+  grid-column: 1 / span 6;
+
+  &.btn-group > .btn {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+}
+
+.numbers {
+  grid-row: span 1;
+  grid-column: span 6;
+
+  &.middle > .btn {
+    border-radius: 0;
+  }
+
+  &.bottom > .btn {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+}
+
+.btn-group {
+  border-bottom: 1px solid gray;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  .btn {
+    border-right: 1px solid gray;
+    margin-right: 1px;
+  }
+  .btn:active {
+    border-right: 1px solid gray;
+  }
+  .btn:last-child {
+    border-right: none;
+    margin-right: 0;
+  }
+}

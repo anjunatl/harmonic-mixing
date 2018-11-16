@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import './CamelotPicker.scss'
 
 class CamelotPicker extends Component {
   constructor(props) {
@@ -15,7 +16,12 @@ class CamelotPicker extends Component {
       const numberHandler = () => {
         this.setState({number: counter})
       }
-      numericButtons.push(<button key={counter} onClick={numberHandler}>{counter}</button>)
+      numericButtons.push(<button 
+        className={this.state.number === counter ? 'btn btn-primary' : 'btn btn-secondary'}
+        key={counter} 
+        onClick={numberHandler}>
+        {counter}
+        </button>)
     }
 
     const letterHandler = (letter) => {
@@ -26,12 +32,15 @@ class CamelotPicker extends Component {
 
     return (
       <div className="CamelotPicker">
-        <div className="letters">
-          <button onClick={letterHandler("A")}>A</button>
-          <button onClick={letterHandler("B")}>B</button>
+        <div className="letters btn-group btn-group-lg" role="group" aria-label="Camelot letters">
+          <button className={this.state.letter === "A" ? 'btn btn-primary' : 'btn btn-secondary'} onClick={letterHandler("A")}>A</button>
+          <button className={this.state.letter === "B" ? 'btn btn-primary' : 'btn btn-secondary'} onClick={letterHandler("B")}>B</button>
         </div>
-        <div className="numbers">
-          {numericButtons}
+        <div className="numbers middle btn-group btn-group-lg" role="group" aria-label="Camelot numbers">
+          {numericButtons.slice(0, 6)}
+        </div>
+        <div className="numbers bottom btn-group btn-group-lg" role="group" aria-label="Camelot numbers">
+          {numericButtons.slice(6, 12)}
         </div>
       </div>
     )
