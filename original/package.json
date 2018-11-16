@@ -1,0 +1,29 @@
+{
+  "name": "harmonic-mixing",
+  "version": "1.0.0",
+  "description": "A JavaScript tool to help you find music while djing",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "coverage": "http-server -a localhost -p 8001 coverage/lcov-report/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anjunatl/harmonic-mixing.git"
+  },
+  "author": "Kevin Hoff <hoffkm@gmail.com>",
+  "license": "UNLICENSED",
+  "private": true,
+  "bugs": {
+    "url": "https://github.com/anjunatl/harmonic-mixing/issues"
+  },
+  "homepage": "https://github.com/anjunatl/harmonic-mixing#readme",
+  "devDependencies": {
+    "http-server": "0.11.1",
+    "jest": "23.5.0",
+    "underscore": "1.8.3"
+  },
+  "dependencies": {
+    "redux": "^3.7.2"
+  }
+}
