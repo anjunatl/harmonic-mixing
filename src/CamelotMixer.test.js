@@ -1,5 +1,5 @@
 import _ from 'underscore'
-import { CamelotMixer, Types } from './camelot.mixer'
+import { CamelotMixer, Types } from './CamelotMixer'
 
 describe('mixer', () => {
   test('rejects bad input 13A', () => {

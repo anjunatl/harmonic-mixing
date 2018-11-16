@@ -1,11 +1,21 @@
 import React, { Component } from 'react'
+import CamelotMixer from './CamelotMixer'
 
-class MixingOutput extends Component {
+class CamelotOutput extends Component {
   render() {
-    if (this.props.camelotOutput.length > 0) {
+    if (this.props.camelotKey) {
+      const output = CamelotMixer.getMixesFor(this.props.camelotKey)
+      const newMixes = output.possibleMixes.map((mix) => {
+        return {
+          type: mix.type,
+          name: mix.name,
+          newMix: mix.newMix.signature
+        }
+      })
+
       return (
         <div className="MixingOutput">
-          <table>
+          <table className="table">
             <thead>
               <tr>
                 <th>Type</th>
@@ -13,7 +23,7 @@ class MixingOutput extends Component {
               </tr>
             </thead>
             <tbody>
-              {this.props.camelotOutput.map((item, index) => {
+              {newMixes.map((item, index) => {
                 return (
                   <tr key={index}>
                     <td>{item.name}</td>
@@ -36,4 +46,4 @@ class MixingOutput extends Component {
   }
 }
 
-export default MixingOutput
+export default CamelotOutput
