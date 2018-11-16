@@ -14,10 +14,13 @@
     "test": "react-scripts test --env=jsdom --coverage",
     "testdev": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "coverage": "http-server -a localhost -p 8001 coverage/lcov-report/ -o"
+    "coverage": "http-server -a localhost -p 8001 coverage/lcov-report/ -o",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build -o github"
   },
   "devDependencies": {
     "ajv": "^6.5.5",
+    "gh-pages": "^2.0.1",
     "http-server": "^0.11.1",
     "node-sass": "^4.10.0",
     "underscore": "^1.9.1"
@@ -32,5 +35,6 @@
     "collectCoverageFrom": [
       "src/camelot.mixer.js"
     ]
-  }
+  },
+  "homepage": "https://anjunatl.github.io/harmonic-mixing"
 }

@@ -11,12 +11,12 @@
 }
 
 .letters {
-  grid-row: 1;
+  grid-row: 3;
   grid-column: 1 / span 6;
 
   &.btn-group > .btn {
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
   }
 }
 
@@ -24,13 +24,13 @@
   grid-row: span 1;
   grid-column: span 6;
 
-  &.middle > .btn {
-    border-radius: 0;
+  &.top > .btn {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
   }
 
-  &.bottom > .btn {
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
+  &.middle > .btn {
+    border-radius: 0;
   }
 }
 

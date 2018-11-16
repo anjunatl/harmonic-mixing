@@ -32,15 +32,15 @@ class CamelotPicker extends Component {
 
     return (
       <div className="CamelotPicker">
+        <div className="numbers top btn-group btn-group-lg" role="group" aria-label="Camelot numbers">
+          {numericButtons.slice(0, 6)}
+        </div>
+        <div className="numbers middle btn-group btn-group-lg" role="group" aria-label="Camelot numbers">
+          {numericButtons.slice(6, 12)}
+        </div>
         <div className="letters btn-group btn-group-lg" role="group" aria-label="Camelot letters">
           <button className={this.state.letter === "A" ? 'btn btn-info' : 'btn btn-secondary'} onClick={letterHandler("A")}>A</button>
           <button className={this.state.letter === "B" ? 'btn btn-info' : 'btn btn-secondary'} onClick={letterHandler("B")}>B</button>
-        </div>
-        <div className="numbers middle btn-group btn-group-lg" role="group" aria-label="Camelot numbers">
-          {numericButtons.slice(0, 6)}
-        </div>
-        <div className="numbers bottom btn-group btn-group-lg" role="group" aria-label="Camelot numbers">
-          {numericButtons.slice(6, 12)}
         </div>
       </div>
     )

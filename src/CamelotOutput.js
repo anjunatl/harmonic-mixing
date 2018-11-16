@@ -15,7 +15,7 @@ class CamelotOutput extends Component {
       })
 
       return (
-        <div className="MixingOutput">
+        <div className="CamelotOutput">
           <table className="table table-striped table-bordered">
             <thead>
               <tr>
@@ -38,8 +38,8 @@ class CamelotOutput extends Component {
       )
     } else {
       return (
-        <div>
-          Choose a mix from above
+        <div className="CamelotOutput empty">
+          Set your current key above
         </div>
       )
     }
