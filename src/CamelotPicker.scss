@@ -53,3 +53,8 @@
     margin-right: 0;
   }
 }
+
+button, button:focus, .btn:focus, .btn.focus, .btn-info:focus, .btn-info.focus { 
+  box-shadow: none;
+  outline: none;
+}

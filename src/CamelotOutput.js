@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import CamelotMixer from './CamelotMixer'
+import './CamelotOutput.scss'
 
 class CamelotOutput extends Component {
   render() {
@@ -15,7 +16,7 @@ class CamelotOutput extends Component {
 
       return (
         <div className="MixingOutput">
-          <table className="table">
+          <table className="table table-striped table-bordered">
             <thead>
               <tr>
                 <th>Type</th>
