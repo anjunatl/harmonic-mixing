@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
 import CamelotPicker from './CamelotPicker'
+import CamelotMixer from './camelot.mixer'
+import MixingOutput from './MixingOutput'
 import './HarmonicMixer.css'
-import * as CamelotMixer from './camelot.mixer'
 
 class HarmonicMixer extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      camelotKey: null
+      camelotKey: null,
+      mixes: []
     }
   }
 
@@ -16,13 +18,14 @@ class HarmonicMixer extends Component {
       this.state.camelotKey !== prevState.camelotKey
     )) {
       const output = CamelotMixer.getMixesFor(this.state.camelotKey)
-      output.possibleMixes.forEach((mix) => {
-        const output = {
+      const newMixes = output.possibleMixes.map((mix) => {
+        return {
+          type: mix.type,
           name: mix.name,
           newMix: mix.newMix.signature
-        };
-        console.log(output);
+        }
       })
+      this.setState({mixes: newMixes})
     }
   }
 
@@ -37,6 +40,7 @@ class HarmonicMixer extends Component {
           <h1 className="HarmonicMixer-title">Harmonic Mixer</h1>
         </header>
         <CamelotPicker onKeyChange={updateKey}></CamelotPicker>
+        <MixingOutput camelotOutput={this.state.mixes}></MixingOutput>
       </div>
     )
   }

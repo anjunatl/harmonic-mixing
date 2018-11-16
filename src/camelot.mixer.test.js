@@ -1,6 +1,5 @@
-const _ = require('underscore')
-const CamelotMixer = require('./camelot.mixer')
-const Types = CamelotMixer.Types
+import _ from 'underscore'
+import { CamelotMixer, Types } from './camelot.mixer'
 
 describe('mixer', () => {
   test('rejects bad input 13A', () => {

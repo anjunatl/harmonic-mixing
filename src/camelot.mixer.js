@@ -7,7 +7,7 @@ const Types = {
   diagonal: 'diagonal',
   gentleBoost: 'gentleBoost',
   rapidBoost: 'rapidBoost'
-};
+}
 
 const CamelotMixer = {
   Types: Types,
@@ -82,105 +82,103 @@ const CamelotMixer = {
   ],
 
   getMixesFor: (inputCamelotSignature) => {
-    var camelotRegex = /\d{1,2}[ABab]{1}/g;
-    var camelotNumberRegex = /\d{1,2}/g;
-    var camelotLetterRegex = /[ABab]{1}/g;
+    var camelotRegex = /\d{1,2}[ABab]{1}/g
+    var camelotNumberRegex = /\d{1,2}/g
+    var camelotLetterRegex = /[ABab]{1}/g
 
     if (thisIsACamelotSignature(inputCamelotSignature)) {
-      var number = getNumberFromSignature(inputCamelotSignature);
-      var letter = getLetterFromSignature(inputCamelotSignature);
+      var number = getNumberFromSignature(inputCamelotSignature)
+      var letter = getLetterFromSignature(inputCamelotSignature)
 
       var result = {
         startingSignature: inputCamelotSignature,
         startingNumber: number,
         startingLetter: letter,
         possibleMixes: [].concat(CamelotMixer.algorithms)
-      };
+      }
 
       result.possibleMixes.map(function (algorithm, index, collection) {
-        var newNumber;
-        var newLetter;
+        var newNumber
+        var newLetter
         if (algorithm.move.fn) {
-          var custom = algorithm.move.fn(this.startingNumber, this.startingLetter);
-          newNumber = getNewNumber(this.startingNumber, custom.steps);
-          newLetter = getNewLetter(this.startingLetter, custom.position);
+          var custom = algorithm.move.fn(this.startingNumber, this.startingLetter)
+          newNumber = getNewNumber(this.startingNumber, custom.steps)
+          newLetter = getNewLetter(this.startingLetter, custom.position)
         } else {
-          newNumber = getNewNumber(this.startingNumber, algorithm.move.steps);
-          newLetter = getNewLetter(this.startingLetter, algorithm.move.position);
+          newNumber = getNewNumber(this.startingNumber, algorithm.move.steps)
+          newLetter = getNewLetter(this.startingLetter, algorithm.move.position)
         }
 
-        var newSignature = newNumber + newLetter;
+        var newSignature = newNumber + newLetter
 
         var newMix = {
           number: newNumber,
           letter: newLetter,
           signature: newSignature
-        };
+        }
 
-        algorithm.newMix = newMix;
-        return algorithm;
+        algorithm.newMix = newMix
+        return algorithm
 
         function getNewNumber(startingNumber, steps) {
-          var positive = steps > 0;
-          var actualSteps = Math.abs(steps);
-          var newStep = startingNumber;
+          var positive = steps > 0
+          var actualSteps = Math.abs(steps)
+          var newStep = startingNumber
           while (actualSteps !== 0) {
             if (positive) {
-              newStep++;
+              newStep++
             } else {
-              newStep--;
+              newStep--
             }
             if (newStep === 0) {
-              newStep = 12;
+              newStep = 12
             } else if (newStep === 13) {
-              newStep = 1;
+              newStep = 1
             }
-            actualSteps--;
+            actualSteps--
           }
 
-          return newStep;
+          return newStep
         }
 
         function getNewLetter(startingLetter, position) {
           if (position === 'switch') {
-            return startingLetter === 'A' ? 'B' : 'A';
+            return startingLetter === 'A' ? 'B' : 'A'
           } else {
-            return startingLetter;
+            return startingLetter
           }
         }
-      }, result);
+      }, result)
 
-      return result;
+      return result
     } else {
-      return null;
+      return null
     }
 
     function thisIsACamelotSignature(input) {
       if (input.match(camelotRegex)) {
-        var number = getNumberFromSignature(input);
+        var number = getNumberFromSignature(input)
         if (1 <= number && number <= 12) {
-          return true;
+          return true
         } else {
           //console.error("1-12 please")
-          return false;
+          return false
         }
       } else {
         //console.error("Examples: 12A, 1B, 5B")
-        return false;
+        return false
       }
     }
 
     function getNumberFromSignature(signature) {
-      var numberString = signature.match(camelotNumberRegex)[0];
-      return Number.parseInt(numberString);
+      var numberString = signature.match(camelotNumberRegex)[0]
+      return Number.parseInt(numberString)
     }
 
     function getLetterFromSignature(letter) {
-      return letter.match(camelotLetterRegex)[0].toUpperCase();
+      return letter.match(camelotLetterRegex)[0].toUpperCase()
     }
   }
 }
 
-if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
-  module.exports = CamelotMixer;
-}
+export { CamelotMixer as default, Types }
