@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import CamelotMixer from './CamelotMixer'
 import './CamelotPicker.scss'
 
 class CamelotPicker extends Component {
@@ -8,6 +9,20 @@ class CamelotPicker extends Component {
       number: null,
       letter: null
     }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    // For some reason this comes through as `camelot-key` instead of `camelotKey`
+    const newCamelotKey = nextProps['camelot-key'] 
+    if (!!newCamelotKey && CamelotMixer.thisIsACamelotSignature(newCamelotKey)) {
+      this.setState({number: CamelotMixer.getNumberFromSignature(newCamelotKey)})
+      this.setState({letter: CamelotMixer.getLetterFromSignature(newCamelotKey)})
+    }
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return (this.state.letter !== nextState.letter ||
+        this.state.number !== nextState.number)
   }
 
   render() {
@@ -44,11 +59,6 @@ class CamelotPicker extends Component {
         </div>
       </div>
     )
-  }
-
-  shouldComponentUpdate(nextProps, nextState) {
-    return (this.state.letter !== nextState.letter ||
-        this.state.number !== nextState.number)
   }
 
   componentDidUpdate(prevProps, prevState) {

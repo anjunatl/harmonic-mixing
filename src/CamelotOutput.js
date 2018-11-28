@@ -26,7 +26,7 @@ class CamelotOutput extends Component {
             <tbody>
               {newMixes.map((item, index) => {
                 return (
-                  <tr key={index}>
+                  <tr className="result" key={index}>
                     <td>{item.name}</td>
                     <td>{item.newMix}</td>
                   </tr>
