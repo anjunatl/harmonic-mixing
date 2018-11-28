@@ -34,16 +34,29 @@ class CamelotPicker extends Component {
       numericButtons.push(<button 
         className={this.state.number === counter ? 'btn btn-info' : 'btn btn-secondary'}
         key={counter} 
-        onClick={numberHandler}>
+        onClick={numberHandler}
+        camelot-number={counter}>
         {counter}
         </button>)
     }
+
+    const letterButtons = []
 
     const letterHandler = (letter) => {
       return () => {
         this.setState({letter: letter})
       }
     }
+
+    ["A", "B"].forEach((letter, index) => {
+      letterButtons.push(<button
+        className={this.state.letter === letter ? 'btn btn-info' : 'btn btn-secondary'}
+        key={index} 
+        onClick={letterHandler(letter)}
+        camelot-letter={letter}>
+        {letter}
+        </button>)
+    })
 
     return (
       <div className="CamelotPicker">
@@ -54,8 +67,7 @@ class CamelotPicker extends Component {
           {numericButtons.slice(6, 12)}
         </div>
         <div className="letters btn-group btn-group-lg" role="group" aria-label="Camelot letters">
-          <button className={this.state.letter === "A" ? 'btn btn-info' : 'btn btn-secondary'} onClick={letterHandler("A")}>A</button>
-          <button className={this.state.letter === "B" ? 'btn btn-info' : 'btn btn-secondary'} onClick={letterHandler("B")}>B</button>
+          {letterButtons}
         </div>
       </div>
     )

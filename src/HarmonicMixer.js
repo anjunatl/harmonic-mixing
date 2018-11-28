@@ -27,7 +27,7 @@ class HarmonicMixer extends Component {
         </div>
         <div className="row">
           <div className="col HarmonicMixer-camelot-picker">
-            <CamelotPicker camelot-key={this.state.camelotKey} onKeyChange={updateKey}></CamelotPicker>
+            <CamelotPicker camelotKey={this.state.camelotKey} onKeyChange={updateKey}></CamelotPicker>
           </div>
         </div>
         <div className="row">
