@@ -36,7 +36,8 @@
   "jest": {
     "collectCoverageFrom": [
       "src/CamelotMixer.js",
-      "src/CamelotOutput.js"
+      "src/CamelotOutput.js",
+      "src/HarmonicMixer.js"
     ]
   },
   "homepage": "https://anjunatl.github.io/harmonic-mixing"
