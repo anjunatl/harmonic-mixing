@@ -1,24 +1,28 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import { partial } from 'underscore';
 import CamelotMixer from './CamelotMixer'
 import './CamelotPicker.scss'
 
 const CamelotPicker = (props) => {
-  const [number, setNumber] = useState(null);
-  const [letter, setLetter] = useState(null);
+  const [number, setNumber] = useState(null)
+  const [letter, setLetter] = useState(null)
+
+  const changeKey = useCallback((number, letter) => {
+    props.onKeyChange('' + number + letter)
+  }, [props])
 
   useEffect(() => {
     if (props.camelotKey !== null) {
-      setNumber(CamelotMixer.getNumberFromSignature(props.camelotKey));
-      setLetter(CamelotMixer.getLetterFromSignature(props.camelotKey));
+      setNumber(CamelotMixer.getNumberFromSignature(props.camelotKey))
+      setLetter(CamelotMixer.getLetterFromSignature(props.camelotKey))
     }
   }, [props.camelotKey])
 
   useEffect(() => {
     if (number !== null && letter !== null) {
-      props.onKeyChange('' + number + letter);
+      changeKey(number, letter)
     }
-  }, [number, letter]);
+  }, [number, letter, changeKey])
   
   const numericButtons = []
   const letterButtons = []

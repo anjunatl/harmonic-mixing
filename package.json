@@ -18,7 +18,8 @@
     "eject": "react-scripts eject",
     "coverage": "http-server -a localhost -p 8001 coverage/lcov-report/ -o",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build -o github"
+    "deploy": "gh-pages -d build -o github",
+    "ci": "CI=true npm run build && npm run test"
   },
   "devDependencies": {
     "@types/jest": "^24.9.1",
@@ -42,9 +43,11 @@
   ],
   "jest": {
     "collectCoverageFrom": [
-      "src/CamelotMixer.js",
-      "src/CamelotOutput.js",
-      "src/HarmonicMixer.js"
+      "src/**/*.{js,jsx,ts,tsx}",
+      "!**/index.tsx",
+      "!**/react-app-env.d.ts",
+      "!**/registerServiceWorker.js",
+      "!**/node_modules/"
     ]
   },
   "homepage": "https://anjunatl.github.io/harmonic-mixing"
