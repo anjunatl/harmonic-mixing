@@ -1,84 +1,69 @@
-import React, { Component } from 'react'
+import React, { useState, useEffect } from 'react'
+import { partial } from 'underscore';
 import CamelotMixer from './CamelotMixer'
 import './CamelotPicker.scss'
 
-class CamelotPicker extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      number: null,
-      letter: null
+const CamelotPicker = (props) => {
+  const [number, setNumber] = useState(null);
+  const [letter, setLetter] = useState(null);
+
+  useEffect(() => {
+    if (props.camelotKey !== null) {
+      setNumber(CamelotMixer.getNumberFromSignature(props.camelotKey));
+      setLetter(CamelotMixer.getLetterFromSignature(props.camelotKey));
     }
+  }, [props.camelotKey])
+
+  useEffect(() => {
+    if (number !== null && letter !== null) {
+      props.onKeyChange('' + number + letter);
+    }
+  }, [number, letter]);
+  
+  const numericButtons = []
+  const letterButtons = []
+
+  const numberHandler = (number) => {
+    setNumber(number)
+  }
+  
+  const letterHandler = (letter) => {
+    setLetter(letter)
+  }
+  
+  for (let counter = 1; counter <= 12; counter++) {
+    numericButtons.push(<button
+      className={number === counter ? 'btn btn-info' : 'btn btn-secondary'}
+      key={counter}
+      onClick={partial(numberHandler, counter)}
+      camelotnumber={counter}>
+      {counter}
+    </button>)
   }
 
-  componentWillReceiveProps(nextProps) {
-    // For some reason this comes through as `camelot-key` instead of `camelotKey`
-    const newCamelotKey = nextProps['camelot-key'] 
-    if (!!newCamelotKey && CamelotMixer.thisIsACamelotSignature(newCamelotKey)) {
-      this.setState({number: CamelotMixer.getNumberFromSignature(newCamelotKey)})
-      this.setState({letter: CamelotMixer.getLetterFromSignature(newCamelotKey)})
-    }
-  }
+  ["A", "B"].forEach((displayLetter, index) => {
+    letterButtons.push(<button
+      className={letter === displayLetter ? 'btn btn-info' : 'btn btn-secondary'}
+      key={index}
+      onClick={partial(letterHandler, displayLetter)}
+      camelotletter={displayLetter}>
+      {displayLetter}
+    </button>)
+  })
 
-  shouldComponentUpdate(nextProps, nextState) {
-    return (this.state.letter !== nextState.letter ||
-        this.state.number !== nextState.number)
-  }
-
-  render() {
-    const numericButtons = []
-    for (let counter = 1; counter <= 12; counter++) {
-      const numberHandler = () => {
-        this.setState({number: counter})
-      }
-      numericButtons.push(<button 
-        className={this.state.number === counter ? 'btn btn-info' : 'btn btn-secondary'}
-        key={counter} 
-        onClick={numberHandler}
-        camelot-number={counter}>
-        {counter}
-        </button>)
-    }
-
-    const letterButtons = []
-
-    const letterHandler = (letter) => {
-      return () => {
-        this.setState({letter: letter})
-      }
-    }
-
-    ["A", "B"].forEach((letter, index) => {
-      letterButtons.push(<button
-        className={this.state.letter === letter ? 'btn btn-info' : 'btn btn-secondary'}
-        key={index} 
-        onClick={letterHandler(letter)}
-        camelot-letter={letter}>
-        {letter}
-        </button>)
-    })
-
-    return (
-      <div className="CamelotPicker">
-        <div className="numbers top btn-group btn-group-lg" role="group" aria-label="Camelot numbers">
-          {numericButtons.slice(0, 6)}
-        </div>
-        <div className="numbers middle btn-group btn-group-lg" role="group" aria-label="Camelot numbers">
-          {numericButtons.slice(6, 12)}
-        </div>
-        <div className="letters btn-group btn-group-lg" role="group" aria-label="Camelot letters">
-          {letterButtons}
-        </div>
+  return (
+    <div className="CamelotPicker">
+      <div className="numbers top btn-group btn-group-lg" role="group" aria-label="Camelot numbers">
+        {numericButtons.slice(0, 6)}
       </div>
-    )
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    if (!!this.state.letter && 
-        !!this.state.number) {
-      this.props.onKeyChange(this.state.number + this.state.letter)
-    }
-  }
+      <div className="numbers middle btn-group btn-group-lg" role="group" aria-label="Camelot numbers">
+        {numericButtons.slice(6, 12)}
+      </div>
+      <div className="letters btn-group btn-group-lg" role="group" aria-label="Camelot letters">
+        {letterButtons}
+      </div>
+    </div>
+  )
 }
 
 export default CamelotPicker

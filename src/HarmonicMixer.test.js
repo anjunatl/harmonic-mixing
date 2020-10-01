@@ -13,8 +13,8 @@ describe('Harmonic mixer', () => {
 
   test('picking 1A will show the results for camelot key 1A', () => {
     const wrapper = mount(<HarmonicMixer />)
-    wrapper.find('button[camelot-number=1]').simulate('click')
-    wrapper.find('button[camelot-letter="A"]').simulate('click')
+    wrapper.find('button[camelotnumber=1]').simulate('click')
+    wrapper.find('button[camelotletter="A"]').simulate('click')
     expect(wrapper.find('div.CamelotOutput.empty').length).toBe(0)
     expect(wrapper.find("div.CamelotOutput table tr.result").length).toBe(7)
     expect(wrapper.find("tr.mix-type--relative td:last-child").text()).toBe("1B")
