@@ -175,8 +175,8 @@ const getNumberFromSignature = (signature) => {
   return Number.parseInt(numberString)
 }
 
-const getLetterFromSignature = (letter) => {
-  return letter.match(camelotLetterRegex)[0].toUpperCase()
+const getLetterFromSignature = (signature) => {
+  return signature.match(camelotLetterRegex)[0].toUpperCase()
 }
 
 const CamelotMixer = {
