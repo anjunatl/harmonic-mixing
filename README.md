@@ -1,7 +1,7 @@
 Harmonic Mixing
 ================================================================================
 
-A JavaScript tool to help you find music while djing.
+A JavaScript tool to help you find music while djing
 
 Development
 --------------------------------------------------------------------------------
@@ -13,17 +13,17 @@ Development
 ## Development
 
 * `npm start` to start the dev environment
-* `npm run testdev` to run the Jest unit tests in watch mode
+* `npm run test` to run the Jest unit tests in watch mode
 
 ## Tests
 
-* `npm test` to run the Jest unit tests & generate a code coverage report
+* `npm run ci` to run the Jest unit tests & generate a code coverage report
 * `npm run coverage` to see the code coverage report
 
 ## Todo
 
-* [ ] Tests!
-* [ ] Add natural key representation
+* [x] Tests!
+* [x] Add natural key representation
 * [ ] Add Traktor key representation
 
 ## Things picked up along the way
