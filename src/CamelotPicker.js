@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import { partial } from 'underscore';
 import CamelotMixer from './CamelotMixer'
+import NoteMapping from './NoteMapping';
 import './CamelotPicker.scss'
 
 const CamelotPicker = (props) => {
-  const [number, setNumber] = useState(null)
-  const [letter, setLetter] = useState(null)
+  const [number, setNumber] = useState(1)
+  const [letter, setLetter] = useState('A')
 
   const changeKey = useCallback((number, letter) => {
     props.onKeyChange('' + number + letter)
@@ -41,7 +42,7 @@ const CamelotPicker = (props) => {
       key={counter}
       onClick={partial(numberHandler, counter)}
       camelotnumber={counter}>
-      {counter}
+      <span className='camelot-notation'>{counter}</span><hr/> { ( counter !== null && letter !== null) && <span className='chromatic-notation'>{NoteMapping.getChromaticNotationFromCamelotSignature("" + counter + letter)}</span> }
     </button>)
   }
 
@@ -51,7 +52,7 @@ const CamelotPicker = (props) => {
       key={index}
       onClick={partial(letterHandler, displayLetter)}
       camelotletter={displayLetter}>
-      {displayLetter}
+      {displayLetter} {displayLetter === 'A' && 'min'}{displayLetter === 'B' && 'maj'}
     </button>)
   })
 

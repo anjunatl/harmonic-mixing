@@ -6,13 +6,13 @@ import './CamelotOutput.scss'
 const CamelotOutput = (props) => {
   if (props.camelotKey) {
     const output = CamelotMixer.getMixesFor(props.camelotKey)
-    const currentKey = NoteMapping.getHumanNotationFromCamelotSignature(props.camelotKey)
+    const currentKey = NoteMapping.getChromaticNotationFromCamelotSignature(props.camelotKey)
     const newMixes = output.possibleMixes.map((mix) => {
       return {
         type: mix.type,
         name: mix.name,
         newMix: mix.newMix.signature,
-        newKey: NoteMapping.getHumanNotationFromCamelotSignature(mix.newMix.signature)
+        newKey: NoteMapping.getChromaticNotationFromCamelotSignature(mix.newMix.signature)
       }
     })
 

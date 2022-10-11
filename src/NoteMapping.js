@@ -42,7 +42,7 @@ const getCircleSegment = (signature) => {
   }
 }
 
-const getHumanNotationFromCamelotSignature = (signature) => {
+const getChromaticNotationFromCamelotSignature = (signature) => {
   const note = fromCamelotSignature(signature)
 
   if (note) {
@@ -76,7 +76,7 @@ const fromCamelotSignature = (signature) => {
 }
 
 const NoteMapping = {
-  getHumanNotationFromCamelotSignature,
+  getChromaticNotationFromCamelotSignature,
   fromCamelotSignature,
   MIN,
   MAJ,
