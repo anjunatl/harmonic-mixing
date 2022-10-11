@@ -33,7 +33,7 @@
     "http-server": "^0.12.3",
     "sass": "^1.0",
     "typescript": "^3.9.7",
-    "underscore": "^1.11.0"
+    "underscore": "^1.13.6"
   },
   "browserslist": [
     ">0.2%",
