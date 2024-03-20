@@ -21,9 +21,9 @@ const CamelotOutput = (props) => {
         <table className="table table-striped table-bordered">
           <thead>
             <tr>
-              <th>Transition from {props.camelotKey} / {currentKey}</th>
-              <th>Mix</th>
+              <th>Transition from {currentKey} / {props.camelotKey}</th>
               <th>Key</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
@@ -31,8 +31,8 @@ const CamelotOutput = (props) => {
               return (
                 <tr className={"result mix-type--" + item.type} key={index}>
                   <td>{item.name}</td>
-                  <td className="mix-type">{item.newMix}</td>
-                  <td className="mix-notation">{item.newKey}</td>
+                  <td className="mix-notation" data-testid={'output-mix-notation-' + item.type}>{item.newKey}</td>
+                  <td className="mix-type" data-testid={'output-mix-' + item.type}>{item.newMix}</td>
                 </tr>
               )
             })}

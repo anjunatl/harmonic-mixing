@@ -12,7 +12,8 @@ Development
 
 ## Development
 
-* `npm start` to start the dev environment
+* `npm run dev` to start the dev environment
+* `npm run build` to get a production build
 * `npm run test` to run the Jest unit tests in watch mode
 
 ## Tests

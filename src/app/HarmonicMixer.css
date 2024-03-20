@@ -1,0 +1,4 @@
+.HarmonicMixer-header, .HarmonicMixer-camelot-picker, .HarmonicMixer-camelot-output {
+  display: flex;
+  justify-content: center;
+}
