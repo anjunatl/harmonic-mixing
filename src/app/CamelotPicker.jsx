@@ -43,13 +43,13 @@ const CamelotPicker = (props) => {
     const keyNotation = letter !== null ? NoteMapping.getChromaticNotationFromCamelotSignature('' + counter + letter) : null
     numericButtons.push(
       <button
-        className={number === counter ? 'btn btn-info' : 'btn btn-secondary'}
+        className={(number === counter ? 'btn btn-info' : 'btn btn-secondary') + ' segment-' + counter + letter}
         key={counter}
         onClick={partial(numberHandler, counter)}
         camelotnumber={counter}>
         
         {keyNotation === null && (<>{counter}{letter}</>)}
-        {keyNotation !== null && (<>{keyNotation}<br/>{counter}{letter}</>)}
+        {keyNotation !== null && (<>{keyNotation}<br/><strong>{counter}{letter}</strong></>)}
       </button>
     )
   }
