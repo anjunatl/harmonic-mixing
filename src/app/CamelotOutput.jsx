@@ -21,7 +21,7 @@ const CamelotOutput = (props) => {
         <table className="table table-striped table-bordered">
           <thead>
             <tr>
-              <th>Transition from <span className={'segment-'+props.camelotKey}>{currentKey} / {props.camelotKey}</span></th>
+              <th>Transition from <span className={'segment-'+props.camelotKey}>{NoteMapping.updateKeyNotationForDisplay(currentKey)} / {props.camelotKey}</span></th>
               <th>Key</th>
               <th></th>
             </tr>
@@ -31,7 +31,7 @@ const CamelotOutput = (props) => {
               return (
                 <tr className={"result mix-type--" + item.type + " segment-" + item.newMix} key={index}>
                   <td>{item.name}</td>
-                  <td className="mix-notation" data-testid={'output-mix-notation-' + item.type}><strong>{item.newKey}</strong></td>
+                  <td className="mix-notation" data-testid={'output-mix-notation-' + item.type}><strong>{NoteMapping.updateKeyNotationForDisplay(item.newKey)}</strong></td>
                   <td className="mix-type" data-testid={'output-mix-' + item.type}><strong>{item.newMix}</strong></td>
                 </tr>
               )

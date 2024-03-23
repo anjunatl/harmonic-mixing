@@ -75,8 +75,15 @@ const fromCamelotSignature = (signature) => {
   }
 }
 
+const updateKeyNotationForDisplay = (keyNotationText) => {
+  const first = keyNotationText[0]
+  const rest = keyNotationText.slice(1)
+  return <>{first}<small className='text-muted'>{rest}</small></>
+}
+
 const NoteMapping = {
   getChromaticNotationFromCamelotSignature,
+  updateKeyNotationForDisplay,
   fromCamelotSignature,
   MIN,
   MAJ,

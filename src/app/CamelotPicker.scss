@@ -10,11 +10,6 @@
   width: 100%;
 }
 
-.labeling {
-  grid-row: 4;
-  grid-column: 1 / span 6;
-}
-
 .letters {
   grid-row: 1;
   grid-column: 1 / span 6;
@@ -31,8 +26,12 @@
 }
 
 .numbers {
-  grid-row: span 2;
+  grid-row: span 1;
   grid-column: span 6;
+
+  .btn {
+    grid-column: span 1;
+  }
 
   &.middle > .btn {
     border-radius: 0;

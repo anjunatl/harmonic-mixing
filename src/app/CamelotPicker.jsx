@@ -40,10 +40,10 @@ const CamelotPicker = (props) => {
   
   numericButtons = []
   for (let counter = 1; counter <= 12; counter++) {
-    const keyNotation = letter !== null ? NoteMapping.getChromaticNotationFromCamelotSignature('' + counter + letter) : null
+    const keyNotation = letter !== null ? NoteMapping.updateKeyNotationForDisplay(NoteMapping.getChromaticNotationFromCamelotSignature('' + counter + letter)) : null
     numericButtons.push(
       <button
-        className={(number === counter ? 'btn btn-info' : 'btn btn-secondary') + ' segment-' + counter + letter}
+        className={(number === counter ? 'btn btn-light' : 'btn btn-secondary') + ' segment-' + counter + letter}
         key={counter}
         onClick={partial(numberHandler, counter)}
         camelotnumber={counter}>
@@ -58,7 +58,7 @@ const CamelotPicker = (props) => {
   letters.forEach((displayLetter, index) => {
     letterButtons.push(
       <button
-        className={letter === displayLetter ? 'btn btn-info' : 'btn btn-secondary'}
+        className={letter === displayLetter ? 'btn btn-light' : 'btn btn-secondary'}
         key={index}
         onClick={partial(letterHandler, displayLetter)}
         camelotletter={displayLetter}>
