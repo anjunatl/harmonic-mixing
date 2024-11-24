@@ -29,10 +29,10 @@ const CamelotOutput = (props) => {
           <tbody>
             {newMixes.map((item, index) => {
               return (
-                <tr className={"result mix-type--" + item.type + " segment-" + item.newMix} key={index}>
+                <tr className={"result mix-type--" + item.type} key={index}>
                   <td>{item.name}</td>
-                  <td className="mix-notation" data-testid={'output-mix-notation-' + item.type}><strong>{NoteMapping.updateKeyNotationForDisplay(item.newKey)}</strong></td>
-                  <td className="mix-type" data-testid={'output-mix-' + item.type}><strong>{item.newMix}</strong></td>
+                  <td className={"mix-notation segment-" + item.newMix} data-testid={'output-mix-notation-' + item.type}><strong>{NoteMapping.updateKeyNotationForDisplay(item.newKey)}</strong></td>
+                  <td className={"mix-type segment-" + item.newMix} data-testid={'output-mix-' + item.type}><strong>{item.newMix}</strong></td>
                 </tr>
               )
             })}
