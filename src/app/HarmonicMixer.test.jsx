@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, screen, fireEvent, waitFor, waitForElementToBeRemoved } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import HarmonicMixer from './HarmonicMixer'
 
 describe('Harmonic mixer', () => {
@@ -20,33 +20,32 @@ describe('Harmonic mixer', () => {
     fireEvent.click( screen.getByText('1') )
     fireEvent.click( screen.getByText('Minor') )
 
-    // screen.debug()
     expect( await screen.findByText('Relative key') ).toBeVisible()
-    expect( screen.getByTestId('output-mix-relative').innerHTML ).toContain('1B')
-    expect( screen.getByTestId('output-mix-notation-relative').innerHTML ).toContain('BM')
+    expect( screen.getByTestId('output-mix-relative') ).toHaveTextContent('1B')
+    expect( screen.getByTestId('output-mix-notation-relative') ).toHaveTextContent('BM')
 
     expect( await screen.findByText('Dominant key') ) .toBeVisible()
-    expect( screen.getByTestId('output-mix-dominant').innerHTML ).toContain('2A')
-    expect( screen.getByTestId('output-mix-notation-dominant').innerHTML ).toContain('Ebm')
+    expect( screen.getByTestId('output-mix-dominant') ).toHaveTextContent('2A')
+    expect( screen.getByTestId('output-mix-notation-dominant') ).toHaveTextContent('Ebm')
     
     expect( await screen.findByText('Subdominant key') ) 
-    expect( screen.getByTestId('output-mix-subdominant').innerHTML ).toContain('12A')
-    expect( screen.getByTestId('output-mix-notation-subdominant').innerHTML ).toContain('Dbm')
+    expect( screen.getByTestId('output-mix-subdominant') ).toHaveTextContent('12A')
+    expect( screen.getByTestId('output-mix-notation-subdominant') ).toHaveTextContent('Dbm')
     
     expect( await screen.findByText('Parallel key') ) 
-    expect( screen.getByTestId('output-mix-parallel').innerHTML ).toContain('10B')
-    expect( screen.getByTestId('output-mix-notation-parallel').innerHTML ).toContain('DM')
+    expect( screen.getByTestId('output-mix-parallel') ).toHaveTextContent('10B')
+    expect( screen.getByTestId('output-mix-notation-parallel') ).toHaveTextContent('DM')
 
     expect( await screen.findByText('Diagonal mix') ) 
-    expect( screen.getByTestId('output-mix-diagonal').innerHTML ).toContain('12B')
-    expect( screen.getByTestId('output-mix-notation-diagonal').innerHTML ).toContain('EM')
+    expect( screen.getByTestId('output-mix-diagonal') ).toHaveTextContent('12B')
+    expect( screen.getByTestId('output-mix-notation-diagonal') ).toHaveTextContent('EM')
 
     expect( await screen.findByText('Gentle energy boost') ) 
-    expect( screen.getByTestId('output-mix-gentleBoost').innerHTML ).toContain('8A')
-    expect( screen.getByTestId('output-mix-notation-gentleBoost').innerHTML ).toContain('Am')
+    expect( screen.getByTestId('output-mix-gentleBoost') ).toHaveTextContent('8A')
+    expect( screen.getByTestId('output-mix-notation-gentleBoost') ).toHaveTextContent('Am')
 
     expect( await screen.findByText('Rapid energy boost') ) 
-    expect( screen.getByTestId('output-mix-rapidBoost').innerHTML ).toContain('3A')
-    expect( screen.getByTestId('output-mix-notation-rapidBoost').innerHTML ).toContain('Bbm')
+    expect( screen.getByTestId('output-mix-rapidBoost') ).toHaveTextContent('3A')
+    expect( screen.getByTestId('output-mix-notation-rapidBoost') ).toHaveTextContent('Bbm')
   })
 })
